@@ -1,4 +1,8 @@
-# Interaction Explanation
+<p align="right">
+<a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
+
+# InteractionExplanationDemo
 ### Logical AND–OR Interaction Analysis for Large Language Models
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)]()
