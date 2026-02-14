@@ -1,4 +1,7 @@
-# Interaction Explanation
+<p align="right">
+<a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
+# InteractionExplanationDemo
 ### 面向大语言模型的 AND–OR 逻辑交互分析框架
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue.svg)]()
