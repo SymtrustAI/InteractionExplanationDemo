@@ -1,235 +1,168 @@
-<p align="right">
-<a href="README.md">English</a> | <a href="README_zh.md">中文</a>
-</p>
+# 🔍 Interaction Explanation  
+### Interpretable AND–OR Interaction Analysis for Large Language Models  
 
-# InteractionExplanationDemo
-### Logical AND–OR Interaction Analysis for Large Language Models
+**Startup Demo · Model Inference Transparency · Cross-Model Mechanistic Analysis**
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)]()
-[![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)]()
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Release](https://img.shields.io/badge/Release-v1.0-black.svg)]()
-[![Status](https://img.shields.io/badge/Status-First%20Public%20Release-brightgreen.svg)]()
+[English](README.md) | [中文](README_zh.md)
 
----
-
-## Overview
-
-**Interaction Explanation** is a research-oriented framework for extracting and analyzing logical AND–OR interactions inside Large Language Models (LLMs).
-
-This repository enables structured and reproducible comparison of interaction behavior across model families under different computational budgets.
-
-This first public release (v1.0) supports controlled comparison between:
-
-- Qwen 2.5  
-- DeepSeek-R1 distilled models  
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
+![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)  
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)  
+![Release](https://img.shields.io/badge/Release-v1.0-black.svg)
 
 ---
 
-## Key Features
+## 🚀 Why This Matters
 
-- AND / OR interaction extraction  
-- Interaction sparsity analysis  
-- Generalizable interaction distribution analysis  
-- AND / OR interaction tree construction  
+Large language models are powerful — but opaque.
+
+**Interaction Explanation** reveals the logical interaction structure behind LLM inference.
+
+Instead of only observing outputs, we analyze:
+
+- 🧠 How tokens interact  
+- 🌳 What interaction patterns emerge  
+- 📊 Where interaction strength concentrates  
+- ⚖ How inference logic differs across models  
+
+This repository is a technical demonstration of SymTrustAI capability in LLM evalutaion and interpretability.
 
 ---
 
-## Supported Model Tiers
+## 🧠 What We Demonstrate
 
-### Small Tier (1.5B Scale)
+### AND–OR Interaction Extraction  
+Extract structured AND–OR interactions among input tokens.
 
-Designed for limited GPU environments.
+### Interaction Sparsity Profiling  
+Quantify the sparsity of interactions, demonstrating that a small subset of salient interactions is sufficient to faithfully explain an LLM’s inference logic.
+
+### Logical Interaction Trees  
+Construct interpretable AND–OR logical trees from salient interactions, capable of mimicking the model’s outputs across masked input prompts.
+
+### Cross-Model Mechanistic Comparison  
+Systematically compare interactions between DeepSeek and Qwen models to uncover differences in their underlying inference mechanisms.
+
+
+---
+
+
+## 🧪 Supported Configurations
+
+### 🟢 Small Tier (1.5B)
 
 | Model 1 | Model 2 |
 |----------|----------|
 | deepseek-r1-distill-qwen-1.5b | qwen2.5-1.5b |
 
-Run with:
+Run:
 
-    --model_size small
+    python ./demo --model_size small
 
-Recommended for:
-
-- Consumer GPUs  
-- Rapid experimentation  
-- Low-memory environments  
+Recommended for lightweight experimentation and limited GPU memory.
 
 ---
 
-### Large Tier (7B / 8B Scale)
-
-Default configuration.
+### 🔵 Large Tier (7B / 8B) — Default
 
 | Model 1 | Model 2 |
 |----------|----------|
-| deepseek-r1-distill-llama-8b  | qwen2.5-7b |
+| deepseek-r1-distill-llama-8b | qwen2.5-7b |
 
-Run with:
+Run:
 
-    --model_size large
+    python ./demo
 
-Recommended for:
-
-- Research-grade experiments  
-- Full interaction analysis  
+Recommended for full structural analysis.
 
 ---
 
-## Installation
+## ⚙ Installation
 
-### Requirements
+Requirements:
 
 - Python 3.10  
-- Conda (recommended)  
+- Conda  
 - CUDA-capable GPU  
 
-### Setup
+Setup:
 
     conda create -n interaction python=3.10
     conda activate interaction
-    cd Interaction_Explanation
+    cd InteractionExplanationDemo
     pip install -r requirements.txt
 
 ---
 
-## Model Download
+## 🚀 Quick Start
 
-Models are automatically downloaded to:
+Default:
 
-    ./model_path
+    python ./demo
 
-You may modify the path in:
+Small mode:
 
-    ./global_const
-
-If models are already downloaded from Hugging Face, place them under:
-
-    ./model_path/hub/
+    python ./demo --model_size small
 
 ---
 
-## Quick Start
+## 🛠 Command Line Arguments
 
-### Default Run (Large Tier)
+| Argument | Default | Description |
+|----------|----------|-------------|
+| `--gpu_id` | 1 | GPU device ID |
+| `--cal_batch_size` | 128 | Masked forward batch size |
+| `--model_size` | large | small or large |
 
-    python ./InteractionDemo
-
-### Small Tier Example
-
-    python ./InteractionDemo --model_size small
-
----
-
-## Command-Line Arguments
-
-| Argument           | Default  | Description                     |
-|--------------------|----------|---------------------------------|
-| `--gpu_id`           | 1        | GPU device ID                  |
-| `--cal_batch_size`   | 128      | Masked forward-pass batch size|
-| `--model_size `      | large    | small or large                 |
-
-Note: Reduce `--cal_batch_size` if GPU memory is limited.
+If GPU memory is limited, reduce `--cal_batch_size`.
 
 ---
 
-## Custom Input
-If you want to run your own example, please ensure that the required input files are in the specified directories:
+## 📝 Custom Input (Advanced)
 
-**Note: before creating your own file, please remove the existing input files** 
+<details>
+<summary><b>Click to expand configuration details</b></summary>
 
-```bash
-rm datasets/custom-generation-test/sentences.txt
-rm -rf players/custom-generation-test/players-qwen-manual/*
-```
+### Step 1 — Remove default example
 
-### Sentence Requirements
+    rm datasets/custom-generation-test/sentences.txt
+    rm -rf players/custom-generation-test/players-qwen-manual/*
 
-- 10–20 words  
-- No repetition  
-- Semantically meaningful content  
+---
+
+### Step 2 — Add sentences
 
 Save to:
 
     datasets/custom-generation-test/sentences.txt
-   
 
-For example:
+Constraints:
 
-```bash
-echo "Even though he was a green hand, he still solved the" > datasets/custom-generation-test/sentences.txt
-echo "For months, we have urged China to change these unfair practices, and give fair and reciprocal treatment to American" >> datasets/custom-generation-test/sentences.txt
-```
+- 10–20 words  
+- No repetition  
+- Semantically meaningful  
+
 ---
 
-### Player Definition
+### Step 3 — Define players
 
-Create a JSON file named player_words.json and add content to it based on the required format:
+Create:
 
     players/custom-generation-test/player_words.json
 
-For example: 
-
-```bash
-cat > players/custom-generation-test/player_words.json <<EOL
-{
-    "0": ["Even","though","he","green","hand","he","still", "solved","the"],
-    "1": [ "For months","urged", "China","change", "unfair practices,","give","fair","reciprocal","treatment","American"]
-}
-EOL
-```
-(Optional) For more details on formatting the JSON file, refer to players/format_guide.txt.
 Constraints:
 
 - 8–15 players  
-- Preserve original token order  
+- Preserve original order  
 - Avoid punctuation-only tokens  
-- Avoid weak semantic tokens (e.g., and, to, the)  
+- Avoid weak semantic words (e.g., and, to, the)
 
----
+</details>
 
-**Guaidance on input sentence and player**
 
-1. **Sentences**
+## 📊 Outputs
 
-- Minimum length: **10 words**
-- Maximum length: **20 words**
-- Sentences outside this range will be rejected with an error message.
-- Example:
-  - ✅ Valid: `"This is a sentence with exactly fifteen words, which meets the requirements."`
-  - ❌ Invalid: `"This is short."`
-- Avoid duplicate inputs or repeated phrases:
-  - ❌ Invalid: `"Hello Hello Hello Hello Hello"`
-
-2. **Players**
-
-- maximum players: **15**
-- minimum players: **8**
-- Players must be in the order of appearance
-  - Example: `"Even though he was a green hand, he still solved the"`
-    - ✅ Valid: `Even`, `though`, `he`, `was`,  ...
-    - ❌ Invalid:`though`,`Even`, `was`, `he`, ...
-- Avoid pure punctutation
-  - Example: `This is amazing !`
-  - ❌ Invalid: `"!"`
-- Avoid words without strong semantics
-  - Words with weak semantics, such as prepositions, conjunctions, and articles, are suggested to be excluded.
-  - Example: `For months, we have urged China to change these unfair practices, and give fair and reciprocal treatment to American`
-    - words **NOT** recommended to be a player: `these`, `and`, `to`
-- **Words are considered valid players only if they are separated by spaces**.
-     - Example: "Without a doubt, one of Tobe Hoppor's best! Epic storytellng, great special effects, and The Spacegirl (vamp me baby!)."
-          - "doubt," is considered a word, rather than "doubt"
-          - "Hoppor's" is considered a word, rather than "Hoppor"
-          - "baby!)" is considered a word, rather than "baby"
-          
-          
-## Output Structure
-
-Each model generates:
-
-    model_name#pretrain/
-
-Includes:
+Each model produces:
 
 - generation.txt  
 - inference.txt  
@@ -237,53 +170,35 @@ Includes:
 - sparsity.png  
 - interaction_tree.pdf  
 
-Comparisoms between two models are stored in:
+Cross-model comparison results are stored in:
 
     generalizable_interaction/
 
 ---
 
+## 💻 Hardware Recommendations
 
-
-## Hardware Recommendations
-
-| Tier  | Suggested VRAM |
-|-------|----------------|
-| small | ≥ 10GB        |
-| large | ≥ 32GB        |
+| Tier | Recommended VRAM |
+|------|------------------|
+| small | ≥ 10GB |
+| large | ≥ 32GB |
 
 ---
 
-## Scope of v1.0
+## 💡 Startup Vision
 
-This release focuses on:
+We believe interpretability is foundational for:
 
-- Qwen vs DeepSeek interaction comparison  
-- AND–OR logical decomposition  
-- Generalizable interaction analysis  
+- Reliable AI systems  
+- Safer deployment  
+- Transparent model evaluation  
+- Cross-model benchmarking  
 
-Future updates may include:
-
-- Additional model families  
-- Extended visualization tools  
-- Pipeline optimization  
+This demo showcases our structural analysis capability.  
+It does not expose internal production infrastructure.
 
 ---
 
-## Contributing
-
-We welcome issues and pull requests.
-
-When reporting issues, include:
-
-- GPU type  
-- CUDA version  
-- Model tier  
-- Full error logs  
-
----
-
-## License
+## 📜 License
 
 Apache License 2.0
-

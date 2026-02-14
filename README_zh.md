@@ -1,45 +1,54 @@
-<p align="right">
-<a href="README.md">English</a> | <a href="README_zh.md">中文</a>
-</p>
+# 🔍 Interaction Explanation  
+### 面向大语言模型的 AND–OR 逻辑交互分析框架  
 
-# InteractionExplanationDemo
-### 面向大语言模型的 AND–OR 逻辑交互分析框架
+**创业公司 Demo · 模型推理透明化 · 跨模型机理分析**
 
-[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)]()
-[![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)]()
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Release](https://img.shields.io/badge/Release-v1.0-black.svg)]()
-[![Status](https://img.shields.io/badge/Status-First%20Public%20Release-brightgreen.svg)]()
+[English](README.md) | [中文](README_zh.md)
 
----
-
-## 项目简介
-
-**Interaction Explanation** 是一个面向大语言模型（LLMs）的研究型框架，用于提取与分析模型内部的 AND–OR 逻辑交互结构。
-
-本仓库支持在不同算力预算下，对不同模型家族的交互行为进行结构化、可复现的对比分析。
-
-本次首个公开版本（v1.0）支持以下模型对比：
-
-- Qwen 2.5  
-- DeepSeek-R1 蒸馏模型  
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
+![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)  
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)  
+![Release](https://img.shields.io/badge/Release-v1.0-black.svg)
 
 ---
 
-## 核心功能
+## 🚀 为什么重要
 
-- AND / OR 交互结构提取  
-- 交互稀疏性分析  
-- 可泛化交互分布分析  
-- AND / OR 逻辑交互树构建  
+大语言模型能力强大，但内部推理机制高度不透明。
+
+**Interaction Explanation** 聚焦于揭示 LLM 推理过程中的 AND–OR 逻辑交互结构。
+
+我们不仅关注输出结果，更关注：
+
+- 🧠 Token 之间如何发生交互  
+- 🌳 推理过程中形成了哪些结构模式  
+- 📊 交互强度如何分布与集中  
+- ⚖ 不同模型之间推理逻辑的差异  
+
+本仓库是 SymTrustAI 在 LLM 评估与可解释性方向能力的技术演示。
 
 ---
 
-## 支持的模型规模
+## 🧠 我们展示的能力
 
-### 小规模模式（1.5B 规模）
+### AND–OR 交互提取  
+提取输入 token 之间结构化的 AND–OR 逻辑交互关系。
 
-适用于算力受限环境。
+### 交互稀疏性分析  
+量化交互结构的稀疏性，表明仅需少量关键交互即可忠实解释大语言模型的推理逻辑。
+
+### 逻辑交互树构建  
+基于显著交互构建可解释的 AND–OR 逻辑树，能够在掩码输入提示下近似复现模型的输出行为。
+
+### 跨模型机理对比  
+系统性比较 DeepSeek 与 Qwen 模型的交互结构，揭示其底层推理机制的差异。
+
+
+---
+
+## 🧪 支持的模型配置
+
+### 🟢 小规模模式（1.5B）
 
 | 模型 1 | 模型 2 |
 |----------|----------|
@@ -47,19 +56,13 @@
 
 运行方式：
 
-    --model_size small
+    python ./demo --model_size small
 
-推荐场景：
-
-- 消费级 GPU  
-- 快速实验验证  
-- 显存较小环境  
+适用于显存较小环境或快速实验。
 
 ---
 
-### 大规模模式（7B / 8B 规模）
-
-默认配置。
+### 🔵 大规模模式（7B / 8B）— 默认
 
 | 模型 1 | 模型 2 |
 |----------|----------|
@@ -67,164 +70,99 @@
 
 运行方式：
 
-    --model_size large
+    python ./demo
 
-推荐场景：
-
-- 研究级实验  
-- 完整交互结构分析  
+适用于完整结构分析。
 
 ---
 
-## 安装说明
+## ⚙ 安装说明
 
-### 环境要求
+环境要求：
 
 - Python 3.10  
-- Conda（推荐）  
+- Conda  
 - 支持 CUDA 的 GPU  
 
-### 安装步骤
+安装步骤：
 
     conda create -n interaction python=3.10
     conda activate interaction
-    cd Interaction_Explanation
+    cd InteractionExplanationDemo
     pip install -r requirements.txt
 
 ---
 
-## 模型下载
+## 🚀 快速开始
 
-模型会自动下载至：
+默认运行：
 
-    ./model_path
+    python ./demo
 
-可在以下文件中修改模型路径：
+小规模模式：
 
-    ./global_const
-
-若已从 Hugging Face 下载模型，可放置于：
-
-    ./model_path/hub/
+    python ./demo --model_size small
 
 ---
 
-## 快速开始
-
-### 默认运行（大规模模式）
-
-    python ./InteractionDemo
-
-### 小规模模式示例
-
-    python ./InteractionDemo --model_size small
-
----
-
-## 命令行参数
+## 🛠 命令行参数
 
 | 参数 | 默认值 | 说明 |
-|------|--------|------|
+|----------|----------|-------------|
 | `--gpu_id` | 1 | GPU 设备编号 |
 | `--cal_batch_size` | 128 | 掩码前向计算批大小 |
 | `--model_size` | large | small 或 large |
 
-说明：如显存不足，请适当降低 `--cal_batch_size`。
+如显存不足，请适当降低 `--cal_batch_size`。
 
 ---
 
-## 自定义输入
+## 📝 自定义输入（进阶）
 
-若需运行自定义示例，请确保输入文件位于指定目录。
+<details>
+<summary><b>点击展开配置说明</b></summary>
 
-在创建自定义文件前，请先删除默认示例文件：
+### 步骤 1 — 删除默认示例
 
     rm datasets/custom-generation-test/sentences.txt
     rm -rf players/custom-generation-test/players-qwen-manual/*
 
 ---
 
-### 句子要求
+### 步骤 2 — 添加输入句子
 
-- 10–20 个单词  
-- 不可重复  
-- 需具备语义内容  
-
-保存路径：
+保存至：
 
     datasets/custom-generation-test/sentences.txt
 
-示例：
+要求：
 
-    echo "Even though he was a green hand, he still solved the" > datasets/custom-generation-test/sentences.txt
-    echo "For months, we have urged China to change these unfair practices, and give fair and reciprocal treatment to American" >> datasets/custom-generation-test/sentences.txt
+- 10–20 个单词  
+- 不可重复  
+- 需具备语义信息  
 
 ---
 
-### Player 定义
+### 步骤 3 — 定义 Player
 
-创建 JSON 文件：
+创建文件：
 
     players/custom-generation-test/player_words.json
 
-示例：
+要求：
 
-    cat > players/custom-generation-test/player_words.json <<EOL
-    {
-        "0": ["Even","though","he","green","hand","he","still", "solved","the"],
-        "1": [ "For months","urged", "China","change", "unfair practices,","give","fair","reciprocal","treatment","American"]
-    }
-    EOL
+- 8–15 个 player  
+- 顺序必须与原句一致  
+- 不可为纯标点  
+- 避免语义弱词（如 and, to, the）
 
-（可选）更多格式说明请参考：
-
-    players/format_guide.txt
+</details>
 
 ---
 
-### 输入与 Player 约束说明
+## 📊 输出内容
 
-#### 1. 句子要求
-
-- 最少：10 个单词  
-- 最多：20 个单词  
-- 超出范围将报错  
-- 示例：
-  - ✅ 合法："This is a sentence with exactly fifteen words, which meets the requirements."
-  - ❌ 非法："This is short."
-- 避免重复输入或重复短语：
-  - ❌ 非法："Hello Hello Hello Hello Hello"
-
----
-
-#### 2. Player 要求
-
-- 最多 15 个  
-- 最少 8 个  
-- 必须按照原句出现顺序排列  
-  - 示例句子：
-    "Even though he was a green hand, he still solved the"
-    - ✅ 合法：Even, though, he, was, ...
-    - ❌ 非法：though, Even, was, he, ...
-- 避免纯标点符号
-  - ❌ 非法："!"
-- 避免语义弱词（如介词、连词、冠词）
-  - 不推荐：these, and, to 等
-- 仅当单词由空格分隔时才视为有效 Player  
-  - 例如：
-    "doubt," 视为一个单词  
-    "Hoppor's" 视为一个单词  
-    "baby!)" 视为一个单词  
-
----
-
-## 输出结构
-
-每个模型生成目录：
-
-    model_name#pretrain/
-
-包含：
+每个模型会生成：
 
 - generation.txt  
 - inference.txt  
@@ -232,50 +170,35 @@
 - sparsity.png  
 - interaction_tree.pdf  
 
-两个模型之间的对比结果存储在：
+跨模型对比结果存储在：
 
     generalizable_interaction/
 
 ---
 
-## 硬件建议
+## 💻 硬件建议
 
 | 模式 | 推荐显存 |
-|------|----------|
+|------|------------------|
 | small | ≥ 10GB |
-| large | > 32GB |
+| large | ≥ 32GB |
 
 ---
 
-## v1.0 版本范围
+## 💡 创业愿景
 
-本版本重点包括：
+我们相信，可解释性是构建可信 AI 系统的基础，包括：
 
-- Qwen 与 DeepSeek 的交互结构对比  
-- AND–OR 逻辑分解  
-- 可泛化交互分析  
+- 更可靠的模型  
+- 更安全的部署  
+- 更透明的模型评估  
+- 更标准化的跨模型对比  
 
-未来可能扩展：
-
-- 更多模型家族  
-- 更丰富的可视化工具  
-- 计算流程优化  
+本 Demo 展示了我们的结构化推理分析能力。  
+不包含内部生产系统实现。
 
 ---
 
-## 贡献
-
-欢迎提交 Issue 与 Pull Request。
-
-提交问题时请包含：
-
-- GPU 型号  
-- CUDA 版本  
-- 使用的模型规模  
-- 完整报错日志  
-
----
-
-## 许可证
+## 📜 许可证
 
 Apache License 2.0
