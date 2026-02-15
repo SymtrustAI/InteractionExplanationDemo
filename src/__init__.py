@@ -1,1 +1,0 @@
-from src.run_interaction_nlp_joint import run_interaction

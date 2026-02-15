@@ -1,5 +1,5 @@
 import argparse
-from src import run_interaction
+from src.Function1 import run_interaction
 
 
 if __name__ == '__main__':
