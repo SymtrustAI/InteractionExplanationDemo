@@ -1,88 +1,60 @@
-# 🔍 Interaction Explanation  
-### Interpretable AND–OR Interaction Analysis for Large Language Models  
+<h1 align="center">Interaction Explanation</h1>
 
-**Startup Demo · Model Inference Transparency · Cross-Model Mechanistic Analysis**
+<p align="center">
+  <a href="README.md">English</a> | 
+  <a href="README_zh.md">中文</a>
+</p>
 
-[English](README.md) | [中文](README_zh.md)
-
-![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
-![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)  
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)  
-![Release](https://img.shields.io/badge/Release-v1.0-black.svg)
-
----
-
-## 🚀 Why This Matters
-
-Large language models are powerful — but opaque.
-
-**Interaction Explanation** reveals the logical interaction structure behind LLM inference.
-
-Instead of only observing outputs, we analyze:
-
-- 🧠 How tokens interact  
-- 🌳 What interaction patterns emerge  
-- 📊 Where interaction strength concentrates  
-- ⚖ How inference logic differs across models  
-
-This repository is a technical demonstration of SymTrustAI capability in LLM evalutaion and interpretability.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue.svg" />
+  <img src="https://img.shields.io/badge/CUDA-Required-green.svg" />
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
+  </a>
+  <img src="https://img.shields.io/badge/Release-v1.0-black.svg" />
+</p>
 
 
-## 🌐 Try the Demo
 
-Explore real interaction-level analysis results on our live demo platform:
-👉 [https://www.symtrustai.com/demo](https://www.symtrustai.com/demo)
+Recent theoretical advances suggest that well-trained deep neural networks (DNNs) can be faithfully explained by a sparse AND–OR logical model, which can mimic the network’s outputs across arbitrarily masked input configurations
+Specifically, the AND–OR logical model is composed of interactions between subsets of input variables. 
 
----
-## 🧠 What We Demonstrate
 
-### AND–OR Interaction Extraction  
-Extract structured AND–OR interactions among input tokens.
+- **AND interactions** capture AND relationships between input variables — all variables in a subset must be present to activate the effect.  
+- **OR interactions** capture OR relationships between input variables — the presence of any variable in a subset can trigger the effect.
 
-### Interaction Sparsity Profiling  
-Quantify the sparsity of interactions, demonstrating that a small subset of salient interactions is sufficient to faithfully explain an LLM’s inference logic.
 
-### Logical Interaction Trees  
-Construct interpretable AND–OR logical trees from salient interactions, capable of mimicking the model’s outputs across masked input prompts.
-
-### Cross-Model Mechanistic Comparison  
-Systematically compare interactions between DeepSeek and Qwen models to uncover differences in their underlying inference mechanisms.
+**Interaction Explanation** operationalizes this theory by extracting, quantifying, and visualizing these interactions within the AND-OR logical model, enabling structural analysis of LLM inference.
 
 
 ---
 
+## Usage
 
-## 🧪 Supported Configurations
+### 🌐 Online Demo
 
-### 🟢 Small Tier (1.5B)
+One quick way to explore interaction-level analysis results is through our online demo platform.
 
-| Model 1 | Model 2 |
-|----------|----------|
-| deepseek-r1-distill-qwen-1.5b | qwen2.5-1.5b |
+The demo showcases real examples of AND–OR logical model explanations on `Qwen2.5-7B` and `deepseek-r1-distill-llama-8b`.  
+It allows you to inspect how extracted interactions mechanistically explain detailed inference logic.  
+You can also randomly mask input words to compare the AND–OR logical model’s output with the original LLM output.
 
-Run:
+👉 [Visit the Live Demo](https://www.symtrustai.com/demo)
 
-    python ./demo --model_size small
+### 💻 Run Locally
 
-Recommended for lightweight experimentation and limited GPU memory.
+**Small Tier** (1.5B): `deepseek-r1-distill-qwen-1.5b` vs `qwen2.5-1.5b`
 
----
+Run: `python ./demo --model_size small`
 
-### 🔵 Large Tier (7B / 8B) — Default
 
-| Model 1 | Model 2 |
-|----------|----------|
-| deepseek-r1-distill-llama-8b | qwen2.5-7b |
+**Large Tier** (7B / 8B) — Default:`deepseek-r1-distill-llama-8b` vs `qwen2.5-7b`
 
-Run:
 
-    python ./demo
+Run: `python ./demo`
 
-Recommended for full structural analysis.
 
----
-
-## ⚙ Installation
+##Installation
 
 Requirements:
 
@@ -97,22 +69,9 @@ Setup:
     cd InteractionExplanationDemo
     pip install -r requirements.txt
 
----
-
-## 🚀 Quick Start
-
-Default:
-
-    python ./demo
-
-Small mode:
-
-    python ./demo --model_size small
-
----
 
 
-## 📦 Model Setup
+## Model Setup
 
 Models are automatically downloaded and saved to:`./model_path`
 
@@ -122,9 +81,9 @@ If you have already downloaded models from Hugging Face, place them under:`./mod
 
 **The framework will automatically detect and load the models from this location.**
 
----
 
-## 🛠 Command Line Arguments
+
+## Command Line Arguments
 
 | Argument | Default | Description |
 |----------|----------|-------------|
@@ -134,9 +93,9 @@ If you have already downloaded models from Hugging Face, place them under:`./mod
 
 If GPU memory is limited, reduce `--cal_batch_size`.
 
----
 
-## 📝 Custom Input (Advanced)
+
+## Custom Input (Advanced)
 
 <details>
 <summary><b>Click to expand configuration details</b></summary>
@@ -146,7 +105,7 @@ If GPU memory is limited, reduce `--cal_batch_size`.
     rm datasets/custom-generation-test/sentences.txt
     rm -rf players/custom-generation-test/players-qwen-manual/*
 
----
+
 
 ### Step 2 — Add sentences
 
@@ -160,7 +119,7 @@ Constraints:
 - No repetition  
 - Semantically meaningful  
 
----
+
 
 ### Step 3 — Define players
 
@@ -178,7 +137,7 @@ Constraints:
 </details>
 
 
-## 📊 Outputs
+## Outputs
 
 Each model produces:
 
@@ -188,35 +147,20 @@ Each model produces:
 - sparsity.png  
 - interaction_tree.pdf  
 
-Cross-model comparison results are stored in:
+Cross-model comparison results are stored in: `generalizable_interaction/`
 
-    generalizable_interaction/
 
----
 
-## 💻 Hardware Recommendations
+## Hardware Recommendations
 
 | Tier | Recommended VRAM |
 |------|------------------|
-| small | ≥ 10GB |
-| large | ≥ 32GB |
+| small | > 10GB |
+| large | > 32GB |
 
----
 
-## 💡 Startup Vision
 
-We believe interpretability is foundational for:
 
-- Reliable AI systems  
-- Safer deployment  
-- Transparent model evaluation  
-- Cross-model benchmarking  
-
-This demo showcases our structural analysis capability.  
-It does not expose internal production infrastructure.
-
----
-
-## 📜 License
+## License
 
 Apache License 2.0

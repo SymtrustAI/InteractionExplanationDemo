@@ -1,98 +1,73 @@
-# 🔍 Interaction Explanation  
-### 面向大语言模型的 AND–OR 逻辑交互分析框架  
+<h1 align="center">Interaction Explanation</h1>
 
-**创业公司 Demo · 模型推理透明化 · 跨模型机理分析**
+<p align="center">
+  <a href="README.md">English</a> | 
+  <a href="README_zh.md">中文</a>
+</p>
 
-[English](README.md) | [中文](README_zh.md)
-
-![Python](https://img.shields.io/badge/Python-3.10-blue.svg)  
-![CUDA](https://img.shields.io/badge/CUDA-Required-green.svg)  
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)  
-![Release](https://img.shields.io/badge/Release-v1.0-black.svg)
-
----
-
-
-## 🚀 为什么重要
-
-大语言模型能力强大，但内部推理机制高度不透明。
-
-**Interaction Explanation** 聚焦于揭示 LLM 推理过程中的 AND–OR 逻辑交互结构。
-
-我们不仅关注输出结果，更关注：
-
-- 🧠 Token 之间如何发生交互  
-- 🌳 推理过程中形成了哪些结构模式  
-- 📊 交互强度如何分布与集中  
-- ⚖ 不同模型之间推理逻辑的差异  
-
-本仓库是 SymTrustAI 在 LLM 评估与可解释性方向能力的技术演示。
-
-## 🌐 体验在线 Demo
-
-在我们的在线平台上探索真实的机理交互分析结果：
-
-👉 [立即访问 Demo](https://www.symtrustai.com/demo)
-
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue.svg" />
+  <img src="https://img.shields.io/badge/CUDA-Required-green.svg" />
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
+  </a>
+  <img src="https://img.shields.io/badge/Release-v1.0-black.svg" />
+</p>
 
 ---
 
-## 🧠 我们展示的能力
+最新的理论研究表明，训练良好的深度神经网络（DNN）可以通过一个稀疏的 AND–OR 逻辑模型进行机理层面的解释。  该符号模型能够在任意遮挡输入配置下复现网络的输出行为。
 
-### AND–OR 交互提取  
-提取输入 token 之间结构化的 AND–OR 逻辑交互关系。
+具体而言，AND–OR 逻辑模型由定义在输入变量子集上的交互结构构成：
 
-### 交互稀疏性分析  
-量化交互结构的稀疏性，表明仅需少量关键交互即可忠实解释大语言模型的推理逻辑。
+- **AND 交互** 表示变量之间的与关系 —— 只有当子集中所有变量同时存在时，该效应才会被激活。  
+- **OR 交互** 表示变量之间的或关系 —— 子集中任意变量的出现都可以触发该效应。
 
-### 逻辑交互树构建  
-基于显著交互构建可解释的 AND–OR 逻辑树，能够在掩码输入提示下近似复现模型的输出行为。
+在该框架下，仅需少量显著交互即可刻画模型的推理行为。
 
-### 跨模型机理对比  
-系统性比较 DeepSeek 与 Qwen 模型的交互结构，揭示其底层推理机制的差异。
-
+**Interaction Explanation** 将这一理论框架落地为可操作工具，通过提取、量化与可视化这些交互结构，实现对大语言模型推理过程的结构化机理分析。
 
 ---
 
-## 🧪 支持的模型配置
+## 使用方式
 
-### 🟢 小规模模式（1.5B）
+### 🌐 在线演示
 
-| 模型 1 | 模型 2 |
-|----------|----------|
-| deepseek-r1-distill-qwen-1.5b | qwen2.5-1.5b |
+快速体验交互级机理分析结果的方式之一，是访问我们的在线演示平台。
 
-运行方式：
+该 Demo 展示了 `Qwen2.5-7B` 与 `deepseek-r1-distill-llama-8b` 的 AND–OR 逻辑模型解释结果。  你可以查看提取出的交互如何在机理层面解释模型的详细推理过程。  此外，你还可以随机对输入词进行掩码，并比较 AND–OR 逻辑模型输出与原始 LLM 输出之间的差异。
+
+👉 [访问在线 Demo](https://www.symtrustai.com/demo)
+
+---
+
+### 💻 本地运行
+
+**小规模模式（1.5B）**  
+`deepseek-r1-distill-qwen-1.5b` vs `qwen2.5-1.5b`
+
+运行：
 
     python ./demo --model_size small
 
-适用于显存较小环境或快速实验。
+**大规模模式（7B / 8B）— 默认**  
+`deepseek-r1-distill-llama-8b` vs `qwen2.5-7b`
 
----
-
-### 🔵 大规模模式（7B / 8B）— 默认
-
-| 模型 1 | 模型 2 |
-|----------|----------|
-| deepseek-r1-distill-llama-8b | qwen2.5-7b |
-
-运行方式：
+运行：
 
     python ./demo
 
-适用于完整结构分析。
-
 ---
 
-## ⚙ 安装说明
+## 安装
 
-环境要求：
+### 环境要求
 
 - Python 3.10  
 - Conda  
 - 支持 CUDA 的 GPU  
 
-安装步骤：
+### 安装步骤
 
     conda create -n interaction python=3.10
     conda activate interaction
@@ -101,30 +76,25 @@
 
 ---
 
-## 🚀 快速开始
+## 模型配置
 
-默认运行：
+模型将自动下载并保存至：
 
-    python ./demo
+    ./model_path
 
-小规模模式：
+你可以在以下文件中修改默认模型路径：
 
-    python ./demo --model_size small
+    ./global_const
 
----
-## 📦 模型配置
+如果你已经从 Hugging Face 下载模型，请将其放置在：
 
-模型将自动下载并保存至：`./model_path`
-
-你可以在以下文件中修改默认模型路径：`./global_const`
-
-如果你已经从 Hugging Face 下载了模型，请将其放置在：`./model_path/hub/`
+    ./model_path/hub/
 
 **框架将自动从该路径检测并加载模型。**
 
 ---
 
-## 🛠 命令行参数
+## 命令行参数
 
 | 参数 | 默认值 | 说明 |
 |----------|----------|-------------|
@@ -136,19 +106,17 @@
 
 ---
 
-## 📝 自定义输入（进阶）
+## 自定义输入（进阶）
 
 <details>
 <summary><b>点击展开配置说明</b></summary>
 
-### 步骤 1 — 删除默认示例
+### 步骤 1 —— 删除默认示例
 
     rm datasets/custom-generation-test/sentences.txt
     rm -rf players/custom-generation-test/players-qwen-manual/*
 
----
-
-### 步骤 2 — 添加输入句子
+### 步骤 2 —— 添加句子
 
 保存至：
 
@@ -158,13 +126,11 @@
 
 - 10–20 个单词  
 - 不可重复  
-- 需具备语义信息  
+- 具有语义信息  
 
----
+### 步骤 3 —— 定义 Player
 
-### 步骤 3 — 定义 Player
-
-创建文件：
+创建：
 
     players/custom-generation-test/player_words.json
 
@@ -172,16 +138,16 @@
 
 - 8–15 个 player  
 - 顺序必须与原句一致  
-- 不可为纯标点  
-- 避免语义弱词（如 and, to, the）
+- 避免纯标点符号  
+- 避免语义弱词（如 and、to、the 等）
 
 </details>
 
 ---
 
-## 📊 输出内容
+## 输出内容
 
-每个模型会生成：
+每个模型将生成：
 
 - generation.txt  
 - inference.txt  
@@ -189,35 +155,20 @@
 - sparsity.png  
 - interaction_tree.pdf  
 
-跨模型对比结果存储在：
-
-    generalizable_interaction/
+跨模型对比结果存储于： `generalizable_interaction/`
 
 ---
 
-## 💻 硬件建议
+## 硬件建议
 
 | 模式 | 推荐显存 |
 |------|------------------|
-| small | ≥ 10GB |
-| large | ≥ 32GB |
+| small | > 10GB |
+| large | > 32GB |
 
 ---
 
-## 💡 创业愿景
-
-我们相信，可解释性是构建可信 AI 系统的基础，包括：
-
-- 更可靠的模型  
-- 更安全的部署  
-- 更透明的模型评估  
-- 更标准化的跨模型对比  
-
-本 Demo 展示了我们的结构化推理分析能力。  
-不包含内部生产系统实现。
-
----
-
-## 📜 许可证
+## 许可证
 
 Apache License 2.0
+
