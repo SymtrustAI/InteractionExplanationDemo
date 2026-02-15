@@ -111,6 +111,19 @@ Small mode:
 
 ---
 
+
+## 📦 Model Setup
+
+Models are automatically downloaded and saved to:`./model_path`
+
+You can modify the default model directory in:`./global_const`
+
+If you have already downloaded models from Hugging Face, place them under:`./model_path/hub/`
+
+**The framework will automatically detect and load the models from this location.**
+
+---
+
 ## 🛠 Command Line Arguments
 
 | Argument | Default | Description |

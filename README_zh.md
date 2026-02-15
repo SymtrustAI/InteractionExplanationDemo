@@ -112,6 +112,17 @@
     python ./demo --model_size small
 
 ---
+## 📦 模型配置
+
+模型将自动下载并保存至：`./model_path`
+
+你可以在以下文件中修改默认模型路径：`./global_const`
+
+如果你已经从 Hugging Face 下载了模型，请将其放置在：`./model_path/hub/`
+
+**框架将自动从该路径检测并加载模型。**
+
+---
 
 ## 🛠 命令行参数
 
