@@ -27,8 +27,13 @@ Instead of only observing outputs, we analyze:
 
 This repository is a technical demonstration of SymTrustAI capability in LLM evalutaion and interpretability.
 
----
 
+## 🌐 Try the Demo
+
+Explore real interaction-level analysis results on our live demo platform:
+👉 [https://www.symtrustai.com/demo](https://www.symtrustai.com/demo)
+
+---
 ## 🧠 What We Demonstrate
 
 ### AND–OR Interaction Extraction  
