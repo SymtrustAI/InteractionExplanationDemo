@@ -44,9 +44,13 @@ You can also randomly mask input words to compare the AND–OR logical model’s
 👉 Prefer a guided walkthrough? Watch the platform demo below.
 
 <p align="center">
-<video width="720" controls>
-  <source src="https://raw.githubusercontent.com/SymtrustAI/InteractionExplanationDemo/main/assets/Demo_walkthrough.mp4" type="video/mp4">
-</video>
+  <a href="https://github.com/SymtrustAI/InteractionExplanationDemo/releases/download/v1.0/Demo_walkthrough.mp4">
+    <img src="https://github.com/SymtrustAI/InteractionExplanationDemo/assets/demo.png" width="720"/>
+  </a>
+</p>
+
+<p align="center">
+  ▶️ Click to watch the demo walkthrough
 </p>
 
 ### 💻 Run Locally
