@@ -41,9 +41,7 @@ You can also randomly mask input words to compare the AND–OR logical model’s
 
 👉 [Visit the Live Demo](https://www.symtrustai.com/demo)
 
-👉 Prefer a guided walkthrough? Watch the platform demo above.
-
-### 🎥 Platform Walkthrough
+👉 Prefer a guided walkthrough? Watch the platform demo below.
 
 <p align="center">
 <video width="720" controls>
