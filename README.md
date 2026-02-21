@@ -41,6 +41,20 @@ You can also randomly mask input words to compare the AND–OR logical model’s
 
 👉 [Visit the Live Demo](https://www.symtrustai.com/demo)
 
+👉 Prefer a guided walkthrough? Watch the platform demo above.
+
+### 🎥 Platform Walkthrough
+
+<p align="center">
+  <a href="https://github.com/SymtrustAI/InteractionExplanationDemo/releases/download/v1.0/Demo_walkthrough.mp4">
+    <img src="assets/demo.png" width="720"/>
+  </a>
+</p>
+
+<p align="center">
+  ▶️ Click to watch the demo walkthrough
+</p>
+
 ### 💻 Run Locally
 
 **Small Tier** (1.5B): `deepseek-r1-distill-qwen-1.5b` vs `qwen2.5-1.5b`
