@@ -39,6 +39,18 @@
 
 👉 [访问在线 Demo](https://www.symtrustai.com/demo)
 
+👉 想要一个更直观的操作演示？请观看下方平台演示视频。
+
+<p align="center">
+  <a href="https://github.com/SymtrustAI/InteractionExplanationDemo/releases/download/v1.0/Demo_walkthrough.mp4">
+    <img src="assets/demo-thumbnail.png" width="720"/>
+  </a>
+</p>
+
+<p align="center">
+  ▶️ 点击观看演示视频
+</p>
+
 ---
 
 ### 💻 本地运行
