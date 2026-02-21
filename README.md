@@ -45,7 +45,7 @@ You can also randomly mask input words to compare the AND–OR logical model’s
 
 <p align="center">
   <a href="https://github.com/SymtrustAI/InteractionExplanationDemo/releases/download/v1.0/Demo_walkthrough.mp4">
-    <img src="https://github.com/SymtrustAI/InteractionExplanationDemo/assets/demo-thumbnail.png" width="720"/>
+    <img src="assets/demo-thumbnail.png" width="720"/>
   </a>
 </p>
 
