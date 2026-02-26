@@ -37,7 +37,7 @@
 
 该 Demo 展示了 `Qwen2.5-7B` 与 `deepseek-r1-distill-llama-8b` 的 AND–OR 逻辑模型解释结果。  你可以查看提取出的交互如何在机理层面解释模型的详细推理过程。  此外，你还可以随机对输入词进行掩码，并比较 AND–OR 逻辑模型输出与原始 LLM 输出之间的差异。
 
-👉 [访问在线 Demo](https://www.symtrustai.com/demo)
+👉 [访问在线 Demo](https://www.demo.symtrustai.com)
 
 👉 想要一个更直观的操作演示？请观看下方平台演示视频。
 
