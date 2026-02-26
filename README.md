@@ -39,7 +39,7 @@ The demo showcases real examples of AND–OR logical model explanations on `Qwen
 It allows you to inspect how extracted interactions mechanistically explain detailed inference logic.  
 You can also randomly mask input words to compare the AND–OR logical model’s output with the original LLM output.
 
-👉 [Visit the Live Demo](https://www.demo.symtrustai.com)
+👉 [Visit the Live Demo](https://demo.symtrustai.com/demo)
 
 👉 Prefer a guided walkthrough? Watch the platform demo below.
 
